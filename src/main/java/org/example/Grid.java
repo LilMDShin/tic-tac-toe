@@ -1,5 +1,7 @@
 package org.example;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.StringJoiner;
 
 public class Grid {
@@ -11,6 +13,13 @@ public class Grid {
             for (int j = 0; j < size; j++) {
                 playerGrid[i][j] = Player.none;
             }
+        }
+    }
+
+    public Grid(@NotNull Grid grid){
+        playerGrid = new Player[grid.playerGrid.length][grid.playerGrid.length];
+        for (int i = 0; i < playerGrid.length; i++) {
+            System.arraycopy(grid.playerGrid[i], 0, playerGrid[i], 0, playerGrid.length);
         }
     }
 
