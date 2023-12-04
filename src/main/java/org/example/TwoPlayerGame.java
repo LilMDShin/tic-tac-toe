@@ -9,10 +9,14 @@ public class TwoPlayerGame {
 
     Grid grid;
 
-    TwoPlayerGame parent;
+    GameTree root;
 
+    // TwoPlayerGame parent;
+
+    // Classic game of Tic-tac-toe
     public TwoPlayerGame() {
         this.grid = new Grid(3);
+        this.root = new GameTree(this.grid);
     }
 
     private void setGrid(Grid grid) {
@@ -31,6 +35,18 @@ public class TwoPlayerGame {
         }
         // this.parent = new TwoPlayerGame(this.grid);
         return  twoPlayerGame;
+    }
+
+    // To handle tree for the minmax algo
+    public GameTree minMaxMove(@NotNull Player player, int i, int j, @NotNull GameTree node) {
+        Grid nextGrid = new Grid(node.grid);
+        nextGrid.place(i, j, player);
+        GameTree childNode = new GameTree(nextGrid, node.gameValue, node.depth + 1);
+        childNode.gameValue = childNode.evaluateGameValue(player, i, j);
+        node.addChild(childNode);
+        // childNode.parent = node;
+        this.grid = nextGrid;
+        return(childNode);
     }
 
     /**

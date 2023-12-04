@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Player {
 
-
     String symbol;
     Grid grid;
 
