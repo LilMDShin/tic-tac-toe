@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f615ebbe-f737-4294-9444-7c540ec360ae" name="Changes" comment="game operational">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f615ebbe-f737-4294-9444-7c540ec360ae" name="Changes" comment="method getMinMaxValues in MinMax class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TwoPlayerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TwoPlayerGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,11 +26,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;LilMDShin&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="5b520f23-8193-42dd-8a00-0048ecba5dcf" />
+        <option name="url" value="git@github.com:LilMDShin/tic-tac-toe.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2YqXbfatzgDICuNAz9bb7xgoqSv" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -64,7 +80,13 @@
       <workItem from="1701527694624" duration="2061000" />
       <workItem from="1701529769376" duration="9917000" />
       <workItem from="1701625397297" duration="341000" />
-      <workItem from="1701680346727" duration="2410000" />
+      <workItem from="1701680346727" duration="4851000" />
+      <workItem from="1701705738401" duration="14471000" />
+      <workItem from="1701766282418" duration="32000" />
+      <workItem from="1701766785156" duration="42000" />
+      <workItem from="1701766855172" duration="2000" />
+      <workItem from="1701766871991" duration="3000" />
+      <workItem from="1701784520628" duration="2205000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -82,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701257106057</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Set up heuristic and game tree">
+      <option name="closed" value="true" />
+      <created>1701682934906</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701682934906</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,19 +121,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="game operational" />
-    <option name="LAST_COMMIT_MESSAGE" value="game operational" />
+    <MESSAGE value="Set up heuristic and game tree" />
+    <MESSAGE value="method getMinMaxValues in MinMax class" />
+    <option name="LAST_COMMIT_MESSAGE" value="method getMinMaxValues in MinMax class" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/GameTree.java</url>
-          <line>10</line>
-          <properties field="gameValue" class="org.example.GameTree" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="childnode.gameValue" language="JAVA" />

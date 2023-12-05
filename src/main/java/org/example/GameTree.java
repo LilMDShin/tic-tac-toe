@@ -2,15 +2,16 @@ package org.example;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
-public class GameTree /* implements Iterable<Player> */ {
+public class GameTree implements Comparable<GameTree> /*implements Iterable<GameTree>*/ {
 
     // 0 is the value for the root node
     int gameValue = 0;
-    int minmaxValue = 0;
-    // root is of depth = 0
+    int minmaxValue = Integer.MAX_VALUE;
     int depth = -1;
     Grid grid;
     GameTree parent;
@@ -32,12 +33,12 @@ public class GameTree /* implements Iterable<Player> */ {
     // the evaluation and real game value of the child is calculated afterwards
     public void addChild(@NotNull GameTree childNode) {
         childNode.parent = this;
-        this.children.add(childNode);
+        this.children.addLast(childNode);
         // return(childNode);
     }
 
     /**
-     * Player max has advantage -> positive, Player min has advantage -> negative.
+     * Player one has advantage (the first player to make a move) -> positive, Player 2 has advantage -> negative.
      */
     public int evaluateGameValue(Player player, int i, int j) {
         // If depth is an odd number then node is for min player
@@ -160,4 +161,25 @@ public class GameTree /* implements Iterable<Player> */ {
         return (count >= 2);
     }
 
+    /*
+    @Override
+    public Iterator<GameTree> iterator() {
+
+        return null;
+    }
+
+    */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameTree gameTree = (GameTree) o;
+        return(Arrays.deepEquals(this.grid.playerGrid, gameTree.grid.playerGrid));
+    }
+
+    @Override
+    public int compareTo(GameTree gameTree) {
+        return (this.depth - gameTree.depth);
+    }
 }

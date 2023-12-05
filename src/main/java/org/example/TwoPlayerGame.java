@@ -34,17 +34,18 @@ public class TwoPlayerGame {
             twoPlayerGame.playerCrosses.place(i, j);
         }
         // this.parent = new TwoPlayerGame(this.grid);
-        return  twoPlayerGame;
+        return twoPlayerGame;
     }
 
     // To handle tree for the minmax algo
+    // To move in GameTree ?
+    // Create funct to make the tree to a certain depth
     public GameTree minMaxMove(@NotNull Player player, int i, int j, @NotNull GameTree node) {
         Grid nextGrid = new Grid(node.grid);
         nextGrid.place(i, j, player);
         GameTree childNode = new GameTree(nextGrid, node.gameValue, node.depth + 1);
         childNode.gameValue = childNode.evaluateGameValue(player, i, j);
         node.addChild(childNode);
-        // childNode.parent = node;
         this.grid = nextGrid;
         return(childNode);
     }

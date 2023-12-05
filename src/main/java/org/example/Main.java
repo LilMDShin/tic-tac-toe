@@ -51,7 +51,7 @@ public class Main {
 
         GameTree childNode = twoPlayerGame.minMaxMove(cross, 1, 1, twoPlayerGame.root);
 
-        // childnode.evaluateGameValue(cross, 1, 1);
+        // childNode.evaluateGameValue(cross, 1, 1);
 
         System.out.println(twoPlayerGame.grid);;
 
@@ -63,8 +63,18 @@ public class Main {
 
         System.out.println(childNode2.gameValue);
 
+        // System.out.println(twoPlayerGame.root.children.get(0).children.get(0).grid);
+
 
         // System.out.println(twoPlayerGame.findFork(cross, 2, 1));
+
+        // Finish move + funct -> Check class TwoPlayerGame near funct minMaxMove
+
+
+        // Test of MinMax class -> funct getMinMaxValues
+
+
+
 
         // define max depth when handling minmax algo
         // max depth can be different depending on the stage of the game
