@@ -9,6 +9,7 @@ public class TwoPlayerGame {
 
     Grid grid;
 
+    /* GameTree root probably not necessary */
     GameTree root;
 
     // TwoPlayerGame parent;
@@ -16,6 +17,7 @@ public class TwoPlayerGame {
     // Classic game of Tic-tac-toe
     public TwoPlayerGame() {
         this.grid = new Grid(3);
+        /* GameTree root probably not necessary */
         this.root = new GameTree(this.grid);
     }
 
@@ -40,6 +42,7 @@ public class TwoPlayerGame {
     // To handle tree for the minmax algo
     // To move in GameTree ?
     // Create funct to make the tree to a certain depth
+    /*
     public GameTree minMaxMove(@NotNull Player player, int i, int j, @NotNull GameTree node) {
         Grid nextGrid = new Grid(node.grid);
         nextGrid.place(i, j, player);
@@ -49,6 +52,8 @@ public class TwoPlayerGame {
         this.grid = nextGrid;
         return(childNode);
     }
+
+    */
 
     /**
      * Player nuts has advantage -> positive, Player crosses has advantage -> negative.
@@ -73,5 +78,57 @@ public class TwoPlayerGame {
 
 
         return 0;
+    }
+
+    /*
+    public GameTree buildGameTree(int nbRealMovesMade, Player playerMax, Player playerMin, GameTree node2) {
+        int maxDepth = MinMax.maxDepth(nbRealMovesMade);
+        int depth = 0;
+        int sizeGrid = this.grid.playerGrid[0].length;
+        // Root of the tree
+        GameTree node = new GameTree(this.grid);
+        GameTree childNode;
+
+
+        while (depth < maxDepth) {
+            for (int i = 0; i < sizeGrid; i++) {
+                for (int j = 0; j < sizeGrid; j++) {
+                    if (node.grid.playerGrid[i][j].equals(Player.none)) {
+                        if (node.depth % 2 == 0) {
+                            GameTree.minMaxMove(playerMax, i, j, node);
+                        }
+                        else {
+                            GameTree.minMaxMove(playerMin, i, j, node);
+                        }
+                    }
+                }
+            }
+            depth++;
+        }
+
+        return(root);
+    }
+
+    */
+
+    // Initially node is the root of the game tree
+    public void buildGameTree(int maxDepth, Player playerMax, Player playerMin, GameTree node) {
+        if (node.depth < maxDepth) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (node.grid.playerGrid[i][j].equals(Player.none)) {
+                        if (node.depth % 2 == 0) {
+                            GameTree.minMaxMove(playerMax, i, j, node);
+                        }
+                        else {
+                            GameTree.minMaxMove(playerMin, i, j, node);
+                        }
+                    }
+                }
+            }
+            for (int index = 0; index < node.children.size(); index++) {
+                buildGameTree(maxDepth, playerMax, playerMin, node.children.get(index));
+            }
+        }
     }
 }

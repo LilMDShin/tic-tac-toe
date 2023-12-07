@@ -6,8 +6,20 @@ public class Main {
         Player cross = new Player("X");
         Player circle = new Player("O");
 
+        TwoPlayerGame twoPlayerGame = new TwoPlayerGame();
+        MinMax minMax = new MinMax();
+
+        int realMovesMade = 0;
+        int maxDepth = MinMax.maxDepth(realMovesMade);
+
         cross.setGrid(grid);
         circle.setGrid(grid);
+
+        GameTree root = new GameTree(twoPlayerGame.grid);
+
+
+        twoPlayerGame.buildGameTree(maxDepth, cross, circle, root);
+
 
         /*
 
@@ -47,19 +59,17 @@ public class Main {
 
         // Example under -> not a fork -> should not matter
 
-        TwoPlayerGame twoPlayerGame = new TwoPlayerGame();
-
-        GameTree childNode = twoPlayerGame.minMaxMove(cross, 1, 1, twoPlayerGame.root);
+        GameTree childNode = GameTree.minMaxMove(cross, 1, 1, twoPlayerGame.root);
 
         // childNode.evaluateGameValue(cross, 1, 1);
 
-        System.out.println(twoPlayerGame.grid);;
+        System.out.println(childNode.grid);;
 
         System.out.println(childNode.gameValue);
 
-        GameTree childNode2 = twoPlayerGame.minMaxMove(circle, 1, 0, childNode);
+        GameTree childNode2 = GameTree.minMaxMove(circle, 1, 0, childNode);
 
-        System.out.println(twoPlayerGame.grid);;
+        System.out.println(childNode2.grid);;
 
         System.out.println(childNode2.gameValue);
 
@@ -79,6 +89,19 @@ public class Main {
         // define max depth when handling minmax algo
         // max depth can be different depending on the stage of the game
         // early on max depth can be rather high while being lower later on
+
+        System.out.println("-----------------------");
+        for (int i = 0; i < root.children.size(); i++) {
+            System.out.println(root.children.get(i).grid);;
+
+            System.out.println(root.children.get(i).gameValue);
+
+            System.out.println("------------------");
+        }
+
+        minMax.getMinMaxValues(root);
+
+        System.out.println("minmaxValue = " + root.minmaxValue);
 
     }
 }

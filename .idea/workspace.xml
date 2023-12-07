@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f615ebbe-f737-4294-9444-7c540ec360ae" name="Changes" comment="method getMinMaxValues in MinMax class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" afterDir="false" />
+    <list default="true" id="f615ebbe-f737-4294-9444-7c540ec360ae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TwoPlayerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TwoPlayerGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +86,8 @@
       <workItem from="1701766785156" duration="42000" />
       <workItem from="1701766855172" duration="2000" />
       <workItem from="1701766871991" duration="3000" />
-      <workItem from="1701784520628" duration="2205000" />
+      <workItem from="1701784520628" duration="2450000" />
+      <workItem from="1701880235018" duration="5409000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -112,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701682934906</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="method getMinMaxValues in MinMax class">
+      <option name="closed" value="true" />
+      <created>1701789176984</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701789176984</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +135,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="method getMinMaxValues in MinMax class" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="childnode.gameValue" language="JAVA" />

@@ -12,7 +12,7 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
     // 0 is the value for the root node
     int gameValue = 0;
     int minmaxValue = Integer.MAX_VALUE;
-    int depth = -1;
+    int depth = 0;
     Grid grid;
     GameTree parent;
     List<GameTree> children;
@@ -48,13 +48,13 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
         Player winner = this.grid.winner();
         if (!winner.equals(Player.none)) {
             // The last player making the move can only be the winner
-            if (this.depth % 2 == 0) {
+            if ((this.depth + 1) % 2 == 0) {
                 calculatedValue = calculatedValue + 100;
             } else {
                 calculatedValue = calculatedValue - 100;
             }
         } else if (findFork(player, i, j)) /* findFork() */ {
-            if (this.depth % 2 == 0) {
+            if ((this.depth + 1) % 2 == 0) {
                 calculatedValue = 80;
             } else {
                 calculatedValue = -80;
@@ -76,7 +76,7 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
             tileValue = 20;
         }
         // Case of player being the min player
-        if (this.depth % 2 == 1) {
+        if ((this.depth + 1) % 2 == 1) {
             tileValue = (-1) * tileValue;
         }
         return (tileValue);
@@ -169,6 +169,17 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
     }
 
     */
+
+    // To handle tree for the minmax algo
+    // Create funct to make the tree to a certain depth
+    public static GameTree minMaxMove(@NotNull Player player, int i, int j, @NotNull GameTree node) {
+        Grid nextGrid = new Grid(node.grid);
+        nextGrid.place(i, j, player);
+        GameTree childNode = new GameTree(nextGrid, node.gameValue, node.depth + 1);
+        childNode.gameValue = childNode.evaluateGameValue(player, i, j);
+        node.addChild(childNode);
+        return(childNode);
+    }
 
     @Override
     public boolean equals(Object o) {
