@@ -2,16 +2,14 @@ package org.example;
 
 import java.util.*;
 
-public class MinMax {
-
-    // GameTree treeRoot;
+public abstract class MinMax {
 
     public static int maxDepth(int nbRealMovesMade) {
         int maxNbMoves = 9;
         int maxDepth;
         if (nbRealMovesMade < 4) {
             // Early game has a lot of possibilities
-            // To simplify, only the max player at depth 0 try will try to max their gain
+            // To simplify, only the max player at depth 0 will try to max their gain
             maxDepth = 1;
         }
         else if (nbRealMovesMade < 7) {
@@ -32,7 +30,6 @@ public class MinMax {
         stack.push(root);
         GameTree currentNode;
         GameTree parentNode;
-        // Check
         List<GameTree> childNodesWithMinMaxValue = new ArrayList<>();
         List<Integer> listGameValue = new ArrayList<>();
         List<GameTree> exploredNodes = new ArrayList<>();
@@ -40,7 +37,6 @@ public class MinMax {
         // exploredNodes.add(root);
         while (!stack.empty()) {
             currentNode = stack.peek();
-            // exploredNodes.add(currentNode);
             isExplored = exploredNodes.contains(currentNode);
             if (!currentNode.children.isEmpty() && !isExplored) { // && !isInList(exploredNodes, currentNode)) {
                 for (int i = 0; i < currentNode.children.size(); i++) {

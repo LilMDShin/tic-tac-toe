@@ -40,7 +40,7 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
     /**
      * Player one has advantage (the first player to make a move) -> positive, Player 2 has advantage -> negative.
      */
-    public int evaluateGameValue(Player player, int i, int j) {
+    public int evaluateGameValue(Player player, int i, int j, MinOrMax minOrMax, Player previousPlayer) {
         // If depth is an odd number then node is for min player
         // If depth is an even number then node is for max player
         int calculatedValue = 0;
@@ -51,7 +51,7 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
             if ((this.depth + 1) % 2 == 0) {
                 calculatedValue = calculatedValue + 100;
             } else {
-                calculatedValue = calculatedValue - 100;
+                calculatedValue = - 100;
             }
         } else if (findFork(player, i, j)) /* findFork() */ {
             if ((this.depth + 1) % 2 == 0) {
@@ -60,7 +60,37 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
                 calculatedValue = -80;
             }
 
-        } else {
+            */
+            if (minOrMax == MinOrMax.MAX) {
+                calculatedValue = 80;
+            }
+            else {
+                calculatedValue = -80;
+            }
+
+        } else if (calculatedValue == 0) {
+            /*
+            if (this.parent != null) {
+                if (this.parent.linePossibleVictory(previousPlayer, i) || this.parent.columnPossibleVictory(previousPlayer, j)
+                        || this.diagPossibleVictory(previousPlayer, i, j)) {
+                    if (minOrMax == MinOrMax.MAX) {
+                        calculatedValue = 150;
+                    }
+                    else {
+                        calculatedValue = -150;
+                    }
+                }
+                else {
+                    calculatedValue = this.valueSimpleTile(i, j);
+                }
+            }
+
+            else {
+                calculatedValue = this.valueSimpleTile(i, j);
+            }
+
+            */
+
             calculatedValue = this.valueSimpleTile(i, j);
         }
         return this.gameValue + calculatedValue;
@@ -176,7 +206,7 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
         Grid nextGrid = new Grid(node.grid);
         nextGrid.place(i, j, player);
         GameTree childNode = new GameTree(nextGrid, node.gameValue, node.depth + 1);
-        childNode.gameValue = childNode.evaluateGameValue(player, i, j);
+        childNode.gameValue = childNode.evaluateGameValue(player, i, j, minOrMax, previousPlayer);
         node.addChild(childNode);
         return(childNode);
     }
