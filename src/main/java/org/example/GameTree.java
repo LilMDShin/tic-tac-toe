@@ -56,7 +56,7 @@ public class GameTree implements Comparable<GameTree> {
         int calculatedValue = 0;
         // Check case of a winner
         Player winner = grid.winner();
-        /*
+
         for (int index_i = 0; index_i < 3; index_i++) {
             for (int index_j = 0; index_j < 3; index_j++) {
                 if (this.grid.playerGrid[index_i][index_j].equals(Player.none)) {
@@ -73,17 +73,7 @@ public class GameTree implements Comparable<GameTree> {
             }
         }
 
-        */
         if (!winner.equals(Player.none) && calculatedValue == 0) {
-            // The last player making the move can only be the winner
-            /*
-            if ((depth + 1) % 2 == 0) {
-                calculatedValue = 100;
-            } else {
-                calculatedValue = - 100;
-            }
-
-            */
             if (minOrMax == MinOrMax.MAX) {
                 calculatedValue = 200;
             }
@@ -92,45 +82,30 @@ public class GameTree implements Comparable<GameTree> {
             }
         }
         else if (findFork(player, i, j) && calculatedValue == 0) {
-            /*
-            if ((depth + 1) % 2 == 0) {
-                calculatedValue = 80;
-            } else {
-                calculatedValue = -80;
-            }
-
-            */
             if (minOrMax == MinOrMax.MAX) {
                 calculatedValue = 80;
             }
             else {
                 calculatedValue = -80;
             }
-
         } else if (calculatedValue == 0) {
-            /*
             if (this.parent != null) {
                 if (this.parent.linePossibleVictory(previousPlayer, i) || this.parent.columnPossibleVictory(previousPlayer, j)
                         || this.diagPossibleVictory(previousPlayer, i, j)) {
                     if (minOrMax == MinOrMax.MAX) {
-                        calculatedValue = 150;
+                        calculatedValue = -150;
                     }
                     else {
-                        calculatedValue = -150;
+                        calculatedValue = +150;
                     }
                 }
                 else {
                     calculatedValue = this.valueSimpleTile(i, j);
                 }
             }
-
             else {
                 calculatedValue = this.valueSimpleTile(i, j);
             }
-
-            */
-
-            calculatedValue = this.valueSimpleTile(i, j);
         }
         return gameValue + calculatedValue;
     }

@@ -75,7 +75,7 @@ public abstract class MinMax {
         sortChildNoesWithMinMaxValue(childNodesWithMinMaxValue, listGameValue);
         listGameValue = new ArrayList<>();
         for (int int_index = 0; int_index < root.children.size(); int_index++) {
-            listGameValue.add(root.children.get(int_index).gameValue);
+            listGameValue.add(root.children.get(int_index).minmaxValue);
         }
         root.minmaxValue = Collections.max(listGameValue);
     }
