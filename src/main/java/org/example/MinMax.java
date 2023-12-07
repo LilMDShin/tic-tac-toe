@@ -18,10 +18,7 @@ public class MinMax {
             maxDepth = 3;
         }
         else {
-            maxDepth = maxNbMoves - nbRealMovesMade;
-        }
-        if (maxDepth < 0) {
-            maxDepth = 0;
+            maxDepth = 1;
         }
         return(maxDepth);
     }

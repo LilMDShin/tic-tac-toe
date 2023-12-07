@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f615ebbe-f737-4294-9444-7c540ec360ae" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TwoPlayerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TwoPlayerGame.java" afterDir="false" />
+    </list>
+    <list id="a22972a1-fb0c-4643-b884-50650e37a145" name="Changes by moi" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/TwoPlayerGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/TwoPlayerGame.java" afterDir="false" />
@@ -39,6 +46,36 @@
         <option name="url" value="git@github.com:LilMDShin/tic-tac-toe.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/org/example/TwoPlayerGame.java">
+      <ranges>
+        <range start1="3" end1="3" start2="3" end2="5" changelist="f615ebbe-f737-4294-9444-7c540ec360ae" />
+        <range start1="114" end1="115" start2="116" end2="117" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="133" end1="133" start2="135" end2="208" changelist="f615ebbe-f737-4294-9444-7c540ec360ae" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/org/example/MinMax.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="4" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="4" end1="5" start2="6" end2="7" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="20" end1="21" start2="22" end2="23" changelist="f615ebbe-f737-4294-9444-7c540ec360ae" />
+        <range start1="22" end1="25" start2="24" end2="24" changelist="f615ebbe-f737-4294-9444-7c540ec360ae" />
+        <range start1="29" end1="30" start2="28" end2="29" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="33" end1="34" start2="32" end2="34" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="43" end1="44" start2="43" end2="44" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="69" end1="70" start2="69" end2="70" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="74" end1="77" start2="74" end2="74" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="79" end1="91" start2="76" end2="76" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="98" end1="98" start2="83" end2="94" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="100" end1="101" start2="96" end2="97" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="102" end1="103" start2="98" end2="99" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+        <range start1="124" end1="125" start2="120" end2="125" changelist="a22972a1-fb0c-4643-b884-50650e37a145" />
+      </ranges>
+    </file>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -88,6 +125,7 @@
       <workItem from="1701766871991" duration="3000" />
       <workItem from="1701784520628" duration="2450000" />
       <workItem from="1701880235018" duration="5409000" />
+      <workItem from="1701938920253" duration="8392000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -121,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701789176984</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="method buildGameTree">
+      <option name="closed" value="true" />
+      <created>1701939219257</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701939219257</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,7 +178,9 @@
     <MESSAGE value="game operational" />
     <MESSAGE value="Set up heuristic and game tree" />
     <MESSAGE value="method getMinMaxValues in MinMax class" />
-    <option name="LAST_COMMIT_MESSAGE" value="method getMinMaxValues in MinMax class" />
+    <MESSAGE value="method buildTree" />
+    <MESSAGE value="method buildGameTree" />
+    <option name="LAST_COMMIT_MESSAGE" value="method buildGameTree" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -141,8 +189,18 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/MinMax.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.example.GameTree" memberName="parent" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="childnode.gameValue" language="JAVA" />
