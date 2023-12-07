@@ -39,7 +39,7 @@ public class TwoPlayerGame {
     }
 
     // Initially node is the root of the game tree
-    public void buildGameTree(int maxDepth, Player playerMax, Player playerMin, GameTree node) {
+    public void buildGameTree(int maxDepth, Player playerMax, Player playerMin, @NotNull GameTree node) {
         if (node.depth < maxDepth) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {

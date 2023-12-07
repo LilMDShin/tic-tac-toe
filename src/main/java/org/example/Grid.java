@@ -4,6 +4,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.StringJoiner;
 
+/**
+ * Represents a game grid
+ */
 public class Grid {
     Player[][] playerGrid;
 
@@ -23,6 +26,13 @@ public class Grid {
         }
     }
 
+    /**
+     * Place a tile at position [i, j]
+     * @param i The col
+     * @param j The row
+     * @param player The player
+     * @return If the tile has been placed
+     */
     public boolean place(int i, int j, Player player) {
         if (playerGrid[i][j].equals(Player.none)) {
             playerGrid[i][j] = player;
@@ -31,6 +41,10 @@ public class Grid {
         return false;
     }
 
+    /**
+     * Returns the player winner
+     * @return The winner
+     */
     public Player winner() {
         Player winner = Player.none;
 
@@ -53,8 +67,8 @@ public class Grid {
     private Player columnWinner(Player winner) {
         for (int i = 0; i < playerGrid.length; i++) {
             Player column = playerGrid[0][i];
-            for (int j = 0; j < playerGrid.length; j++) {
-                if (!playerGrid[j][i].equals(column)) {
+            for (var col : playerGrid) {
+                if (!col[i].equals(column)){
                     column = Player.none;
                     break;
                 }

@@ -1,5 +1,7 @@
 package org.example;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 public abstract class MinMax {
@@ -21,12 +23,9 @@ public abstract class MinMax {
         return(maxDepth);
     }
 
-    // Need to correct, does not work as intended
-    public void getMinMaxValues(GameTree root) {
-        // Check GameTree change minMaXValue to Integer.Max ?
+    public static void evaluateMinMaxValues(GameTree root) {
         int temp;
-        // To really really really test
-        Stack<GameTree> stack = new Stack<>();
+        Deque<GameTree> stack = new ArrayDeque<>();
         stack.push(root);
         GameTree currentNode;
         GameTree parentNode;
@@ -34,8 +33,7 @@ public abstract class MinMax {
         List<Integer> listGameValue = new ArrayList<>();
         List<GameTree> exploredNodes = new ArrayList<>();
         boolean isExplored;
-        // exploredNodes.add(root);
-        while (!stack.empty()) {
+        while (!stack.isEmpty()) {
             currentNode = stack.peek();
             isExplored = exploredNodes.contains(currentNode);
             if (!currentNode.children.isEmpty() && !isExplored) { // && !isInList(exploredNodes, currentNode)) {
@@ -60,28 +58,13 @@ public abstract class MinMax {
                     parentNode.minmaxValue = Collections.min(listGameValue);
                 }
                 if (parentNode.parent != null) {
-                    while (parentNode.parent.children.size() == 1) {
+                    while (parentNode.parent != null && parentNode.parent.children.size() == 1) {
                         stack.pop();
                         temp = parentNode.minmaxValue;
                         parentNode = parentNode.parent;
                         parentNode.minmaxValue = temp;
-                        if (parentNode.parent == null) {
-                            break;
-                        }
                     }
                 }
-                /*
-                while (parentNode.parent.children.size() == 1) {
-                    stack.pop();
-                    temp = parentNode.minmaxValue;
-                    parentNode = parentNode.parent;
-                    parentNode.minmaxValue = temp;
-                    if (parentNode.parent == null) {
-                        break;
-                    }
-                }
-
-                */
                 if (!childNodesWithMinMaxValue.contains(parentNode)) {
                     childNodesWithMinMaxValue.add(parentNode);
                 }
@@ -89,11 +72,18 @@ public abstract class MinMax {
             }
             exploredNodes.add(currentNode);
         }
+        sortChildNoesWithMinMaxValue(childNodesWithMinMaxValue, listGameValue);
+        listGameValue = new ArrayList<>();
+        for (int int_index = 0; int_index < root.children.size(); int_index++) {
+            listGameValue.add(root.children.get(int_index).gameValue);
+        }
+        root.minmaxValue = Collections.max(listGameValue);
+    }
+
+    private static void sortChildNoesWithMinMaxValue(@NotNull List<GameTree> childNodesWithMinMaxValue, List<Integer> listGameValue) {
+        GameTree parentNode;
+        GameTree currentNode = new GameTree(null);
         int index = 0;
-        // Create function to sort childNodesWithMinMaxValue by depth
-        // Sort from smallest depth to highest depth
-        // Collections.sort(childNodesWithMinMaxValue);
-        // Should sort from highest depth to lowest
         childNodesWithMinMaxValue.sort(Collections.reverseOrder());
         while (index < childNodesWithMinMaxValue.size()) {
             currentNode = childNodesWithMinMaxValue.get(index);
@@ -115,7 +105,11 @@ public abstract class MinMax {
             }
             index++;
         }
-
+        if (currentNode.parent == null && index == 1) {
+            for (int int_index = 0; int_index < currentNode.children.size(); int_index++) {
+                currentNode.children.get(int_index).minmaxValue = currentNode.children.get(int_index).gameValue;
+            }
+        }
     }
 
 }

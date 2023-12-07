@@ -5,11 +5,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
-public class GameTree implements Comparable<GameTree> /*implements Iterable<GameTree>*/ {
+/**
+ * Represents the tree of grid for the different possibilities
+ */
+public class GameTree implements Comparable<GameTree> {
 
-    // 0 is the value for the root node
+    /**
+     * 0 is the value for the root node
+     */
     int gameValue = 0;
     int minmaxValue = Integer.MAX_VALUE;
     int depth = 0;
@@ -19,42 +23,77 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
 
     public GameTree(Grid grid) {
         this.grid = grid;
-        this.children = new LinkedList<>();
+        children = new LinkedList<>();
     }
 
     public GameTree(Grid grid, int parentGameValue, int depth) {
         this.grid = grid;
-        this.gameValue = parentGameValue;
+        gameValue = parentGameValue;
         this.depth = depth;
-        this.children = new LinkedList<>();
+        children = new LinkedList<>();
     }
 
-    // For now add child with gameValue of the parent,
-    // the evaluation and real game value of the child is calculated afterwards
+    /**
+     * Add child with gameValue of the parent
+     * the evaluation and real game value of the child is calculated afterward.
+     * @param childNode The node to add to the tree.
+     */
     public void addChild(@NotNull GameTree childNode) {
         childNode.parent = this;
-        this.children.addLast(childNode);
-        // return(childNode);
+        children.addLast(childNode);
     }
 
     /**
      * Player one has advantage (the first player to make a move) -> positive, Player 2 has advantage -> negative.
+     * @param player The player who has to make a move
+     * @param i row
+     * @param j col
+     * @return The value of the game
      */
     public int evaluateGameValue(Player player, int i, int j, MinOrMax minOrMax, Player previousPlayer) {
         // If depth is an odd number then node is for min player
         // If depth is an even number then node is for max player
         int calculatedValue = 0;
         // Check case of a winner
-        Player winner = this.grid.winner();
-        if (!winner.equals(Player.none)) {
+        Player winner = grid.winner();
+        /*
+        for (int index_i = 0; index_i < 3; index_i++) {
+            for (int index_j = 0; index_j < 3; index_j++) {
+                if (this.grid.playerGrid[index_i][index_j].equals(Player.none)) {
+                    if (this.linePossibleVictory(previousPlayer, index_i) || this.columnPossibleVictory(previousPlayer, index_j)
+                            || this.diagPossibleVictory(previousPlayer, index_i, index_j)) {
+                        if (minOrMax == MinOrMax.MAX) {
+                            calculatedValue = -150;
+                        }
+                        else {
+                            calculatedValue = +150;
+                        }
+                    }
+                }
+            }
+        }
+
+        */
+        if (!winner.equals(Player.none) && calculatedValue == 0) {
             // The last player making the move can only be the winner
-            if ((this.depth + 1) % 2 == 0) {
-                calculatedValue = calculatedValue + 100;
+            /*
+            if ((depth + 1) % 2 == 0) {
+                calculatedValue = 100;
             } else {
                 calculatedValue = - 100;
             }
-        } else if (findFork(player, i, j)) /* findFork() */ {
-            if ((this.depth + 1) % 2 == 0) {
+
+            */
+            if (minOrMax == MinOrMax.MAX) {
+                calculatedValue = 200;
+            }
+            else {
+                calculatedValue = -200;
+            }
+        }
+        else if (findFork(player, i, j) && calculatedValue == 0) {
+            /*
+            if ((depth + 1) % 2 == 0) {
                 calculatedValue = 80;
             } else {
                 calculatedValue = -80;
@@ -93,11 +132,17 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
 
             calculatedValue = this.valueSimpleTile(i, j);
         }
-        return this.gameValue + calculatedValue;
+        return gameValue + calculatedValue;
     }
 
+    /**
+     * Gets the value of a tile
+     * @param i row
+     * @param j col
+     * @return The value of the [i, j] tile
+     */
     private int valueSimpleTile(int i, int j) {
-        int tileValue = 0;
+        int tileValue;
         if (i == 1 && j == 1) {
             tileValue = 40;
         } else if (i != 1 & j != 1) {
@@ -106,12 +151,18 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
             tileValue = 20;
         }
         // Case of player being the min player
-        if ((this.depth + 1) % 2 == 1) {
+        if ((depth + 1) % 2 == 1) {
             tileValue = (-1) * tileValue;
         }
         return (tileValue);
     }
 
+    /**
+     * Gets if there is a possible line victory at i
+     * @param player The player who has to make the move
+     * @param i The row
+     * @return True if there is a possible victory
+     */
     private boolean linePossibleVictory(Player player, int i) {
         int nbPlayerSymbol = 0;
         int nbEmptyTiles = 0;
@@ -125,6 +176,12 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
         return (nbPlayerSymbol == 2 && nbEmptyTiles == 1);
     }
 
+    /**
+     * Gets if there is a possible column victory at i
+     * @param player The player who has to make the move
+     * @param j The col
+     * @return True if there is a possible victory
+     */
     private boolean columnPossibleVictory(Player player, int j) {
         int nbPlayerSymbol = 0;
         int nbEmptyTiles = 0;
@@ -138,6 +195,13 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
         return (nbPlayerSymbol == 2 && nbEmptyTiles == 1);
     }
 
+    /**
+     * Gets if there is a possible diagonal victory at i j
+     * @param player The player who has to make the move
+     * @param i The row
+     * @param j The col
+     * @return True if there is a possible victory
+     */
     private boolean diagPossibleVictory(Player player, int i, int j) {
         // Last move being in the center is handled in findFork
         int nbPlayerSymbol = 0;
@@ -165,6 +229,13 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
         return (nbPlayerSymbol == 2 && nbEmptyTiles == 1);
     }
 
+    /**
+     * Finds if there is a fork possible
+     * @param player The player who has to make the move
+     * @param i The row
+     * @param j The col
+     * @return True if there is a possible victory
+     */
     public boolean findFork(Player player, int i, int j) {
         int count = 0;
         // Case of last move being in the center
@@ -191,24 +262,30 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
         return (count >= 2);
     }
 
-    /*
-    @Override
-    public Iterator<GameTree> iterator() {
-
-        return null;
-    }
-
-    */
-
-    // To handle tree for the minmax algo
-    // Create funct to make the tree to a certain depth
-    public static GameTree minMaxMove(@NotNull Player player, int i, int j, @NotNull GameTree node) {
+    /**
+     * To handle tree for the minmax algo
+     * Create function to make the tree to a certain depth
+     * @param player The player who has to make the move
+     * @param i col
+     * @param j row
+     * @param node The tree node
+     * @return tree for the minmax algo
+     */
+    public static @NotNull GameTree minMaxMove(@NotNull Player player, int i, int j, @NotNull GameTree node, MinOrMax minOrMax, Player previousPlayer) {
         Grid nextGrid = new Grid(node.grid);
         nextGrid.place(i, j, player);
         GameTree childNode = new GameTree(nextGrid, node.gameValue, node.depth + 1);
         childNode.gameValue = childNode.evaluateGameValue(player, i, j, minOrMax, previousPlayer);
         node.addChild(childNode);
         return(childNode);
+    }
+
+    /**
+     * Gets the next grid move
+     * @return The best next grid
+     */
+    public Grid getNextGrid(){
+        return children.stream().filter(gameTree -> gameTree.minmaxValue == this.minmaxValue).toList().getFirst().grid;
     }
 
     @Override
@@ -220,7 +297,7 @@ public class GameTree implements Comparable<GameTree> /*implements Iterable<Game
     }
 
     @Override
-    public int compareTo(GameTree gameTree) {
+    public int compareTo(@NotNull GameTree gameTree) {
         return (this.depth - gameTree.depth);
     }
 }
