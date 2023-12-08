@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f615ebbe-f737-4294-9444-7c540ec360ae" name="Changes" comment="Resolve some bugs">
+    <list default="true" id="f615ebbe-f737-4294-9444-7c540ec360ae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MinMax.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +89,8 @@
       <workItem from="1701766871991" duration="3000" />
       <workItem from="1701784520628" duration="2450000" />
       <workItem from="1701880235018" duration="5409000" />
-      <workItem from="1701938920253" duration="18355000" />
+      <workItem from="1701938920253" duration="19007000" />
+      <workItem from="1702018789411" duration="309000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -156,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701971282251</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Resolve bugs for minmax algo">
+      <option name="closed" value="true" />
+      <created>1701975499535</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701975499535</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,9 +178,10 @@
     <MESSAGE value="method buildTree" />
     <MESSAGE value="method buildGameTree" />
     <MESSAGE value="Game works" />
-    <MESSAGE value="Resolve some bugs" />
     <MESSAGE value="Documentation, refactoring and methods for a game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Documentation, refactoring and methods for a game" />
+    <MESSAGE value="Resolve some bugs" />
+    <MESSAGE value="Resolve bugs for minmax algo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolve bugs for minmax algo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

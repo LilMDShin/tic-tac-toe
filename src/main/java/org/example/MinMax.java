@@ -9,7 +9,7 @@ public abstract class MinMax {
     public static int maxDepth(int nbRealMovesMade) {
         int maxNbMoves = 9;
         int maxDepth;
-        if (nbRealMovesMade < 4) {
+        if (nbRealMovesMade < 3) {
             // Early game has a lot of possibilities
             // To simplify, only the max player at depth 0 will try to max their gain
             maxDepth = 1;
